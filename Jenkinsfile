@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'sudo yum install python36u'
+        sh 'virtualenv venv --distribute'
+        sh '. venv/bin/activate'
         sh 'pip install -r requirements.txt'
       }
     }
