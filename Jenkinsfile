@@ -8,8 +8,6 @@ pipeline {
         . venv/bin/activate
         pip install -r requirements.txt
         '''
-        archiveArtifacts artifacts: 'requirements.txt'
-
       }
     }
      stage('DeployToStaging') {
@@ -30,7 +28,7 @@ pipeline {
                                 ], 
                                 transfers: [
                                     sshTransfer(
-                                        sourceFiles: 'requirements.txt',
+                                        sourceFiles: 'Jenkinsfile',
                                         remoteDirectory: '/tmp',
                                         execCommand: 'cd /tmp/ && pip install -r requirements.txt && python application.py'
                                     )
