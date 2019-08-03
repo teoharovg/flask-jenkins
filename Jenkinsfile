@@ -8,7 +8,7 @@ pipeline {
         . venv/bin/activate
         pip install -r requirements.txt
         '''
-        archiveArtifacts artifacts: 'dist/trainSchedule.zip'
+        archiveArtifacts artifacts: 'trainSchedule.zip'
 
       }
     }
@@ -30,8 +30,7 @@ pipeline {
                                 ], 
                                 transfers: [
                                     sshTransfer(
-                                        sourceFiles: 'dist/trainSchedule.zip',
-                                        removePrefix: 'dist/',
+                                        sourceFiles: 'trainSchedule.zip',
                                         remoteDirectory: '/tmp',
                                         execCommand: 'virtualenv venv --distribute && . venv/bin/activate && pip install -r requirements.txt && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && python application.py'
                                     )
