@@ -28,7 +28,7 @@ pipeline {
                                 ], 
                                 transfers: [
                                     sshTransfer(
-                                        sourceFiles: 'Jenkinsfile',
+                                        sourceFiles: '*',
                                         remoteDirectory: '/tmp',
                                         execCommand: 'cd /tmp/ && pip install -r requirements.txt && python application.py'
                                     )
