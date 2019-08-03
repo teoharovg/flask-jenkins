@@ -32,7 +32,7 @@ pipeline {
                                     sshTransfer(
                                         sourceFiles: 'application.py',
                                         remoteDirectory: '/tmp',
-                                        execCommand: 'cd /tmp/ && sudo apt install python-pip -y && pip install -r requirements.txt && python application.py'
+                                        execCommand: 'cd /tmp/ && pip install -r requirements.txt && python application.py'
                                     )
                                 ]
                             )
