@@ -8,6 +8,8 @@ pipeline {
         . venv/bin/activate
         pip install -r requirements.txt
         '''
+        archiveArtifacts artifacts: 'application.py'
+
       }
     }
      stage('DeployToStaging') {
@@ -28,6 +30,7 @@ pipeline {
                                 ], 
                                 transfers: [
                                     sshTransfer(
+                                        sourceFiles: 'application.py',
                                         remoteDirectory: '/tmp',
                                         execCommand: 'virtualenv venv --distribute && . venv/bin/activate && pip install -r requirements.txt && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && python application.py'
                                     )
