@@ -30,7 +30,7 @@ pipeline {
                                 ], 
                                 transfers: [
                                     sshTransfer(
-                                        sourceFiles: 'application.py',
+                                        sourceFiles: 'requirements.txt',
                                         remoteDirectory: '/tmp',
                                         execCommand: 'cd /tmp/ && pip install -r requirements.txt && python application.py'
                                     )
