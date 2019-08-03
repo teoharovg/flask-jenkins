@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'yum install python36u'
+        sh 'sudo yum install python36u'
         sh 'pip install -r requirements.txt'
       }
     }
