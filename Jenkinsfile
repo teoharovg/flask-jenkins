@@ -8,7 +8,7 @@ pipeline {
         . venv/bin/activate
         pip install -r requirements.txt
         '''
-        archiveArtifacts artifacts: '*'
+        archiveArtifacts artifacts: 'requirements.txt'
 
       }
     }
