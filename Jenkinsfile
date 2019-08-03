@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        sh 'sudo yum install \
+        sh 'yum install \
             zlib-devel \
             bzip2 \
             bzip2-devel \
