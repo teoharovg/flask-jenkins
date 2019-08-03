@@ -1,10 +1,19 @@
 pipeline {
-    agent { docker { image 'python:3.5.1' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'python --version'
-            }
-        }
+  agent any
+  stages {
+    stage('build') {
+      steps {
+        sh '''
+        virtualenv venv --distribute
+        . venv/bin/activate
+        pip install -r requirements.txt
+        '''
+      }
     }
+    stage('test') {
+      steps {
+        sh 'python application.py'
+      }   
+    }
+  }
 }
