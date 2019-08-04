@@ -8,10 +8,7 @@ pipeline {
       }
       steps {
           script {
-            app = docker.build("teoharov/flask_test")
-            app.inside {
-                sh 'echo $(curl localhost:8080)'
-          }
+            app = docker.build("teoharov/flask_test")  
         }
       }
     }
