@@ -1,36 +1,36 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: simple_app_service
+  name: flask-test-service
 spec:
   type: NodePort
   selector:
-    app: flask_test
+    app: flask-test
   ports:
-  - protocol: TCP 
+  - protocol: TCP
     port: 8080
     nodePort: 8080
 
 ---
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-app-deployment
-  lables:
-    app: flask_test
+  name: flask-test-deployment
+  labels:
+    app: flask-test
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: flask_test
+      app: flask-test
   template:
     metadata:
       labels:
-        app: flask_test
+        app: flask-test
     spec:
       containers:
-      - name: flask_test
+      - name: flask-test
         image: $DOCKER_IMAGE_NAME:$BUILD_NUMBER
         ports:
         - containerPort: 8080
